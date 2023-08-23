@@ -1,0 +1,60 @@
+# 工作流的名字，不写就默认是本文件名
+name: hello-github-actions
+
+# 触发 workflow 的事件
+on:
+#push时触发
+ push:
+# 也可以指定多个触发条件。例如[push,merge,pull]
+
+ # 触发上面操作的分支分支随意
+ branches:
+
+- master
+
+# 一个workflow由执行的一项或多项job
+
+jobs:
+
+ # 一个job任务，任务名为build
+
+ build:
+
+ #运行在最新版ubuntu系统中
+
+ runs-on: ubuntu-latest
+
+ #步骤合集
+
+ steps:
+
+ #新建一个名为checkout_actions的步骤
+
+- name: checkout_actions 
+
+#使用checkout@v3这个action获取源码，作用是checkout出用户的代码
+# actions/checkout是官方提供的actions，@V3表示tag号
+ uses: actions/checkout@v3
+
+ with:
+        ref: main # 要检出的分支名
+
+
+- name: build
+
+ #执行执行某个shell命令或脚本
+
+ run: |
+
+          cd code
+
+          make
+
+- name: exec
+ run: |
+  cd code
+  ./main
+
+         # 环境变量
+
+
