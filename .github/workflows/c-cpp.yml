@@ -23,4 +23,10 @@ jobs:
             chmod +x main
             ./main
 
+    - uses: actions/upload-artifact@v2
+      name: upload build output
+      with:
+        name: output
+        path: ${{ github.workspace }}/build
+
 
