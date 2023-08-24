@@ -26,7 +26,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       name: upload build output
       with:
-        name: output
-        path: ${{ github.workspace }}/build
+        name: main
+        path: ${{ github.workspace }}/code
 
 
